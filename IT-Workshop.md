@@ -8,6 +8,12 @@ Mye av insperasjonen min kommer fra YouTube-ere som Code Aesthetic, No Boilerpla
 
 Koding/programvareutvikling er en kunstform. Jeg tror av hele mitt hjerte at utvikling bør og må handle om noe mer enn å skrive kode som fungerer. Som utviklere burde vi ha stolthet i den koden vi skriver. Spesielt nå som KI skriver mye av koden vår, tror jeg vi trenger noen retningslinjer og prinsipper som kan hjelpe oss å kjenne igjen god kode. Derfor vil jeg fortelle litt om to av desginprinsippene jeg opplever hjelper meg å skrive god og "ren" kode. Nemlig: "if-invertering" og "tidlig returnering". Dette er to gode prinsipper som sammen lager en dødlig kombo for "dårlig", komplisert og nøstet vibe-kode.
 
+## Plan for workshopen
+1. Hvorfor er god kode viktig?
+2. Introduksjon til if-invertering og tidlig returnering
+3. Live refaktorisering
+4. Opggavejobbing
+
 [Eksemple på spagetti]
 
 ## Hvorfor er god kode viktig?
@@ -44,6 +50,9 @@ Når vi snakker om å "invertere" eller "snu" en betingelse, handler det om å t
 
 **Eksempel**
 
+La oss ta et konkret eksempel på if-invertering, sånn at vi ser hva det faktisk betyr i praksis.
+
+---
 Før invertering:
 
 ```js
@@ -59,6 +68,18 @@ function handleRequest(user, request) {
   }
 }
 ```
+
+
+Her har vi en klassisk kode på en funksjon som skal håndtere en forespørsel av et slag. Den tar inn et bruker-objekt og et forspørsel-objekt. Den ser ganske standard ut. Kanskje noen kjenner seg igjen?
+
+Funksjonen sjekker først om brukeren er logget inn og hvis det er tilfellet så sjekker den om forspørselen er gyldig. Dersom både brukeren er logget inn og forspørselen er gyldig kaller vi på process-funksjonen. Er brukeren ikke logget inn så sender vi ute notifikasjon til brukeren om at han må logge inn først. Dersom det sendes en ugyldig forspørsel varsler vi om det.
+
+Legg merke til hvordan hovedlogikken – altså det vi egentlig vil gjøre, process(request) – ligger dypt inni to if-setninger. Du må først sjekke om brukeren er logget inn, så sjekke om forespørselen er gyldig, før du i det hele tatt får lov å utføre selve handlingen.
+
+Hvis vi skal lese denne koden, så må vi liksom “hoppe ned” gjennom flere nivåer med innrykk og blokker for å finne ut hva som faktisk skjer når alt er som det skal.
+
+---
+
 
 Etter:
 ```js
