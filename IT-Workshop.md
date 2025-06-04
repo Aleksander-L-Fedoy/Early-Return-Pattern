@@ -70,7 +70,7 @@ function handleRequest(user, request) {
 ```
 
 
-Her har vi en klassisk kode på en funksjon som skal håndtere en forespørsel av et slag. Den tar inn et bruker-objekt og et forspørsel-objekt. Den ser ganske standard ut. Kanskje noen kjenner seg igjen?
+Her har vi en klassisk funksjon som skal håndtere en forespørsel av et slag. Den tar inn et bruker-objekt og et forspørsel-objekt. Den ser ganske standard ut. Kanskje noen kjenner seg igjen?
 
 Funksjonen sjekker først om brukeren er logget inn og hvis det er tilfellet så sjekker den om forspørselen er gyldig. Dersom både brukeren er logget inn og forspørselen er gyldig kaller vi på process-funksjonen. Er brukeren ikke logget inn så sender vi ute notifikasjon til brukeren om at han må logge inn først. Dersom det sendes en ugyldig forspørsel varsler vi om det.
 
@@ -79,6 +79,7 @@ Legg merke til hvordan hovedlogikken – altså det vi egentlig vil gjøre, proc
 Hvis vi skal lese denne koden, så må vi liksom “hoppe ned” gjennom flere nivåer med innrykk og blokker for å finne ut hva som faktisk skjer når alt er som det skal.
 
 ---
+Hvis vi inverterer if-setningene, så får vi dette:
 
 
 Etter:
@@ -94,6 +95,17 @@ function handleRequest(user, request) {
 }
 ```
 
+Nå gjør vi nesten det motsatte:
+I stedet for å sjekke alle “de gode tilfellene” først, så sier vi: Hvis noe er feil, håndter det med én gang og kom deg ut!
+Og bare hvis alt er som det skal, så havner vi nederst i funksjonen – og der ligger hovedlogikken.
+
+Vi spør: “Er brukeren **ikke** logget inn?”
+Ja? Da gir vi beskjed om det, og så er vi ferdig.
+
+Hvis brukeren er logget inn, men forespørselen **ikke** er gyldig, så gir vi beskjed om det.
+
+Bare hvis alt er i orden, altså brukeren er innlogget og forespørselen er gyldig, havner vi nederst – og da gjør vi hovedjobben.
+
 Istedenfor å bry oss om når forsepørselen er gydlig, fokuserer vi på når den er ugyldig. For å gi en litt dårlig analogi, så tenk hvis det var sånn at man skulle ringe brannvesenet hver dag og fortelle dem om det brenner eller ikke. Det blir mange unødvendige samtaler. Det er bedre at man kun ringer når noe er feil, altså at det brenner. Ellers gjør vi som alltid.
 
 Fordeler:
@@ -106,6 +118,9 @@ Fordeler:
 
 **Eksempel**
 
+La oss se på et enkelt eksempel hvor vi sjekker om et tall er lik 7.
+
+---
 Før tidlig retur:
 ```py
 def is_seven(num: int) -> bool:
@@ -118,6 +133,20 @@ def is_seven(num: int) -> bool:
     return result
 ```
 
+Her har vi en funksjon `is_seven` som tar inn en variable `num` og returner enten `True` eller `False`,
+
+Vi oppretter først en variabel result, og setter den til None.
+
+Så har vi en if-setning hvor vi setter result til enten True eller False – avhengig av om tallet er 7 eller ikke.
+
+Til slutt returnerer vi resultatet.
+
+Det fungerer, men det er en del “omveier” her.
+Vi lagrer resultatet i en ekstra variabel bare for å returnere det til slutt.
+
+---
+Hvis skriver om til å bruke tidlig returnering får vi dette:
+
 Etter:
 ```py
 def is_seven(num: int) -> bool:
@@ -126,6 +155,14 @@ def is_seven(num: int) -> bool:
 
     return False
 ```
+
+Her gjør vi det mye enklere og mer rett på sak:
+- Med én gang vi vet at num == 7, så returnerer vi True.
+- Hvis vi ikke har returnert da, så vet vi at svaret er False – og returnerer det direkte.
+
+Vi slipper å lage ekstra variabler, og koden er både kortere og lettere å lese.
+
+---
 
 Fordeler:
 - Koden blir mer direkte: man returnerer svaret straks man har det, uten å mellomlagre det «bare for å returnere det til slutt».
