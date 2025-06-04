@@ -13,11 +13,10 @@ Krav:
 - Inverter if-betingelser der det gir mening, slik at du unngår dype eller unødvendige else-blokker.
 """
 
-
+# Bruk tidlig retur og inverter if der det gir mening.
 def rettigheter(alder: int) -> str:
     """
     Returnerer hvilke rettigheter en person har basert på alder.
-    Bruk tidlig retur og inverter if der det gir mening.
     """
     # Skriv kode her!
     pass  # Husk å fjerne denne

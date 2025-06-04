@@ -3,7 +3,10 @@
 
 Ta alt med en klype salt. Jeg er en juniorutvikler og har ikke så mye erfaring med dette. Det er bare mine tanker og meninger.
 
-Jeg brenner for god kode. Koding/programvareutvikling er en kunstform. Jeg tror av hele mitt hjerte at utvikling bør og må handle om noe mer enn å skrive kode som fungerer. Som utviklere burde vi ha stolthet i den koden vi skriver. Spesielt nå som KI skriver mye av koden vår, tror jeg vi trenger noen retningslinjer og prinsipper som kan hjelpe oss å kjenne igjen god kode. Derfor vil jeg fortelle litt om to av desginprinsippene jeg opplever hjelper meg å skrive god og "ren" kode. Nemlig: "if-invertering" og "tidlig returnering". Dette er to gode prinsipper som sammen lager en dødlig kombo for "dårlig", komplisert og nøstet vibe-kode.
+Jeg brenner for god kode. 
+Mye av insperasjonen min kommer fra YouTube-ere som Code Aesthetic, No Boilerplate, ThePrimeagen, ArjanCodes og Fireship for å nevne noen.
+
+Koding/programvareutvikling er en kunstform. Jeg tror av hele mitt hjerte at utvikling bør og må handle om noe mer enn å skrive kode som fungerer. Som utviklere burde vi ha stolthet i den koden vi skriver. Spesielt nå som KI skriver mye av koden vår, tror jeg vi trenger noen retningslinjer og prinsipper som kan hjelpe oss å kjenne igjen god kode. Derfor vil jeg fortelle litt om to av desginprinsippene jeg opplever hjelper meg å skrive god og "ren" kode. Nemlig: "if-invertering" og "tidlig returnering". Dette er to gode prinsipper som sammen lager en dødlig kombo for "dårlig", komplisert og nøstet vibe-kode.
 
 [Eksemple på spagetti]
 
