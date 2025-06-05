@@ -170,6 +170,22 @@ Fordeler:
 - Funskjoner blir ofte mer kompakte
 - Potensielt noe mindre minnebruk og økt ytelse
 
+### Hvorfor passer if-invertering og tidlig returnering så godt sammen?
+
+If-invertering og tidlig returnering er gode prinsipper hver for seg, men når du kombinerer dem, forsterker de hverandres positive egenskaper.
+
+- Med if-invertering håndterer du først alle spesialtilfeller og "negative" scenarioer. Dette gjør at hovedflyten, altså den mest sentrale logikken, ender opp tydelig nederst i funksjonen din.
+- Når du samtidig bruker tidlig returnering, kan du umiddelbart avslutte funksjonen med en gang du finner et spesialtilfelle eller en feil. Dette sikrer at funksjonen din ikke fortsetter med unødvendige sjekker eller operasjoner etter at du allerede vet resultatet.
+
+Ved å kombinere prinsippene får du:
+
+- Tydeligere logikk: Du vet nøyaktig hva som går galt med en gang, uten å navigere gjennom dype if-blokker.
+- Redusert kompleksitet: Du unngår kompliserte og dype innrykk.
+- Økt lesbarhet og vedlikeholdbarhet: Hovedlogikken blir enkel og lett tilgjengelig.
+
+Disse prinsippene er som to gode venner – de fungerer helt greit alene, men sammen blir de en skikkelig effektiv og elegant duo.
+
+
 --- Spørsmål til salen ---
 
 **Hva er galt med denne koden?**
@@ -203,3 +219,4 @@ Noen som vil fortelle?
 # Del 4
 
 ### Praktisk oppgave
+
