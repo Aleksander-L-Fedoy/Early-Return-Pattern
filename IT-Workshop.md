@@ -192,19 +192,23 @@ Disse prinsippene er som to gode venner – de fungerer helt greit alene, men sa
 
 ```py
 def handle_order(order):
+    feedback = None
+
     if order is not None:
         if order.is_paid:
             if len(order.items) > 0:
                 if order.customer.is_active:
-                    print("Ordren behandles")
+                    feedback = "Ordren behandles"
                 else:
-                    print("Kunde er ikke aktiv")
+                    feedback = "Kunde er ikke aktiv"
             else:
-                print("Ordren har ingen varer")
+                feedback = "Ordren har ingen varer"
         else:
-            print("Ordren er ikke betalt")
+            feedback = "Ordren er ikke betalt"
     else:
-        print("Ingen ordre mottatt")
+        feedback = "Ingen ordre mottatt"
+
+    return feedback
 ```
 
 Ta ett minutt og tenk gjennom.
